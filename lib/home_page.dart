@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:expense_tracking_practice_app/cards.dart';
+import 'package:expense_tracking_practice_app/domain/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +12,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController = TabController(length: 4, vsync: this);
+
+  MyUser myUser = MyUser(name: 'Jacob');
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +85,7 @@ class _HomePageState extends State<HomePage>
         size: 45,
       ),
       title: Text(
-        "Hello Jacob",
+        "Hello ${myUser.name}",
         style: TextStyle(color: Colors.white, fontSize: 25),
       ),
       subtitle: Text(

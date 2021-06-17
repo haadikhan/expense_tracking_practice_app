@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'domain/card_model.dart';
+
 class Cards extends StatefulWidget {
   @override
   _CardsState createState() => _CardsState();
@@ -7,6 +9,13 @@ class Cards extends StatefulWidget {
 
 class _CardsState extends State<Cards> with SingleTickerProviderStateMixin {
   late TabController _tabController = TabController(length: 4, vsync: this);
+
+  MyCard card = MyCard(
+    cardName: 'cardName',
+    cardNumber: '0123 4567 8925 1534',
+    expiryDate: '07/23',
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,15 +107,13 @@ class _CardsState extends State<Cards> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                "2880 6556 8005 7571",
+                card.cardNumber,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
-                width: 50,
-              ),
+              const SizedBox(width: 50),
               Icon(
                 Icons.copy,
                 color: Colors.white,
@@ -114,9 +121,7 @@ class _CardsState extends State<Cards> with SingleTickerProviderStateMixin {
               ),
             ],
           ),
-          const SizedBox(
-            height: 70,
-          ),
+          const SizedBox(height: 70),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -141,7 +146,7 @@ class _CardsState extends State<Cards> with SingleTickerProviderStateMixin {
                     style: TextStyle(color: Colors.white54, fontSize: 15),
                   ),
                   Text(
-                    "08/23 ",
+                    card.expiryDate,
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ],
